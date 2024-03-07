@@ -106,22 +106,22 @@ void multipleSwap(pTreapNode &root, int start, int end, int total)
     int split2 = (out ? total - end - 2 : end - start - 1);
     int split3 = (out ? 2 * end - total - 2 : end - start - 1);
     pTreapNode root0, root1, root2, root3;
-    pTreapNode temp1, temp2, temp3, temp4, temp5;
+    pTreapNode temp1, temp2, temp3, temp4;
     
     split(root, root0, temp1, start);
     split(temp1, root1, temp2, split2);
     split(temp2, root2, root3, split3);
     if (!out)
     {
-        merge(temp4, root0, root2);
-        merge(temp5, temp4, root1);
-        merge(root, temp5, root3);
+        merge(temp3, root0, root2);
+        merge(temp4, temp3, root1);
+        merge(root, temp4, root3);
         return;
     }
 
-    merge(temp4, root0, root3);
-    merge(temp5, temp4, root2);
-    merge(root, temp5, root1);
+    merge(temp3, root0, root3);
+    merge(temp4, temp3, root2);
+    merge(root, temp4, root1);
 }
 
 
@@ -155,3 +155,5 @@ int main()
 {
     performSwaps(5, {{1,3}, {2,4}});
 }
+
+
